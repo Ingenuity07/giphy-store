@@ -13,12 +13,10 @@ export const URL_PLAYING = '/giphy.gif';
 export const URL_PAUSED = '/giphy_s.gif';
 
 
-// background colors
 export const WHITE = 'white';
 export const BLACK = 'black';
 
 
-// theme modes
 export const LIGHT = 'https://cdn4.iconfinder.com/data/icons/multimedia-flat-30px/30/sun_light_mode_day-512.png';
 export const DARK = 'https://www.pngfind.com/pngs/m/75-759829_png-file-svg-night-mode-icon-download-transparent.png';
 
