@@ -1,4 +1,4 @@
-export const API_KEY = 'sHRHCBF48JvqZSQxY7kxxo95ovQXoFtx';
+export const API_KEY = 'api-secret';
 export const BASE_URL = 'https://api.giphy.com/v1/gifs';
 export const TRENDING = '/trending';
 export const SEARCH = '/search';
