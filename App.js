@@ -28,7 +28,9 @@ import {
 import debounce from './utils/debounce';
 
 const windowWidth = Dimensions.get('window').width;
+
 const widthRatio = windowWidth / 360;
+
 
 function App(props) {
   const [darkModeEnabled, setDarkModeEnabled] = useState(false);
@@ -47,7 +49,7 @@ function App(props) {
   
     const trendingOrSearch = searchText === '' ? TRENDING : SEARCH;
     const url = `${BASE_URL}${trendingOrSearch}?api_key=${API_KEY}&limit=${PAGE_SIZE}&rating=${RATING}&offset=${offSet}&q=${searchText}`;
-    console.log("SAPIC",url)
+   
     fetch(url)
       .then((res) => res.json())
       .then((response) => {
@@ -61,17 +63,16 @@ function App(props) {
             key: offSet * PAGE_SIZE + index,
           };
         });
-        
         setData(curr_data)
       });
   });
 
-  const renderThemeToggler = useCallback(
+  const themeToggler = useCallback(
     () => {
       const iconUrl = darkModeEnabled ? LIGHT: DARK ;
       return <View style={{marginLeft: 10, position: 'absolute', top: 5, right: 5}}>
                 <Pressable onPress={()=>setDarkModeEnabled(!darkModeEnabled)}>
-                  <Image source={{uri:iconUrl}} style={{width: 40, height: 40}}/>
+                  <Image source={{uri:iconUrl}} style={{width: 45, height: 45}}/>
                 </Pressable>
             </View>;
     },
@@ -88,10 +89,10 @@ function App(props) {
     const trendingOrSearch = searchText === '' ? TRENDING : SEARCH;
     if (offSet !== 0 && offSet < totalCount) {
       const url = `${BASE_URL}${trendingOrSearch}?api_key=${API_KEY}&limit=${PAGE_SIZE}&rating=${RATING}&offset=${offSet}&q=${searchText}`;
-      console.log('trending', url);
+     
       fetch(url)
         .catch((e) => {
-          console.log("offset",PAGE_SIZE,offSet)
+          
           setOffSet((offSet) => offSet - PAGE_SIZE)
           
         })
@@ -100,7 +101,6 @@ function App(props) {
           if (response.pagination.total_count != totalCount) {
             setTotalCount(response.pagination.total_count);
           }
-          //console.log('res', JSON.stringify(response));
           const curr_data = response.data.map((item, index) => {
             const { width, height } = item.images.original;
             return {
@@ -110,11 +110,8 @@ function App(props) {
               key: offSet + index,
             };
           })
-          //setPageIndex((pageIndex) => pageIndex+1);
           setData((data) => [...data, ...curr_data]);
         });
-    } else {
-      console.log('End of List');
     }
   }, [offSet]);
 
@@ -145,7 +142,7 @@ function App(props) {
             value={searchText}
           />
         </View>
-        {renderThemeToggler()}
+        {themeToggler()}
       </View>
       <MasonryList
         data={data}

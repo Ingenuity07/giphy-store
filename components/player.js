@@ -13,8 +13,6 @@ export default function Player(props) {
 
   const url = GIF_BASE_URL + id + (isPlaying ? URL_PLAYING : URL_PAUSED);
   
-  console.log(isPlaying)
-  
   return (
     <Pressable onPress={()=>setIsPlaying((isPlaying)=>!isPlaying)} style={styles.container}>
       <ImageBackground
