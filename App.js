@@ -1,4 +1,4 @@
-import {useState, useEffect, useCallback, useRef} from 'react';
+import {useState, useEffect, useCallback} from 'react';
 import {
   View,
   StyleSheet,
@@ -24,7 +24,7 @@ import {
   WHITE,
   BLACK,
   DEBOUNCE_DELAY_TIME
-} from './constants/AppConst';
+} from './constants/constant';
 import debounce from './utils/debounce';
 
 const windowWidth = Dimensions.get('window').width;

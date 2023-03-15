@@ -3,7 +3,7 @@ import {useState} from 'react';
 
 import {StyleSheet, Image, ImageBackground, Pressable } from 'react-native';
 
-import {GIF_BASE_URL, URL_PLAYING, URL_PAUSED} from '../constants/AppConst';
+import {GIF_BASE_URL, URL_PLAYING, URL_PAUSED} from '../constants/constant';
 
 export default function Player(props) {
 
